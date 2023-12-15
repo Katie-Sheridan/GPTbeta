@@ -1,0 +1,82 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+        p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>GPT App</h1>
+    <h2>I am an AI assistant. What can I help you with today?</h2>
+    <form action="{{ url_for('handle_requests') }}" method="post">
+        
+        <label for="prompt">Enter your prompt:</label>
+        <input type="text" id="prompt" name="prompt" required>
+        <button type="submit">Generate Text</button>
+    </form>
+
+    <body>
+        <!-- Your existing HTML content -->
+    
+        <h2>Last 5 Items in Conversation:</h2>
+        <ul>
+            {% for item in last_5_items %}
+                <li>{{ item.role }}: {{ item.content }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+    
+
+    {% if generated_text %}
+    <h2>Generated Text:</h2>
+    <p>{{ generated_text }}</p>
+    {% endif %}
+
+    {% if error %}
+    <h2>Error:</h2>
+    <p>{{ error }}</p>
+    {% endif %}
+</body>
+
+
+
+</html>
