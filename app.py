@@ -12,11 +12,11 @@ import pip_system_certs.wrapt_requests
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(24)  # Set a secret key for Flask session
 
-# OpenAI Setup (You can place this part in a separate configuration file)
+# OpenAI Setup 
 openai.api_type = "azure"
-openai.api_base = "https://openai-api.mckesson.com/"
-openai.api_version = "2023-03-15-preview"
-openai.api_key = "4116ac52c8ea419c885764ae2b2c990b"
+openai.api_base = "<api base>"
+openai.api_version = "<api version."
+openai.api_key = " <openaikey>"
 openai.api_cert = certifi.where() 
 
 def get_gpt(conversation, user_input):
@@ -26,7 +26,7 @@ def get_gpt(conversation, user_input):
 
         # Call OpenAI API for text completion
         response = openai.ChatCompletion.create(
-            engine="mt-azureopenai-ref-35turbo",
+            engine="<engine name>",
             messages=conversation,
             temperature=0.05,
             max_tokens=800,
